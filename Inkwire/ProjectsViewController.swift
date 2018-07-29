@@ -3,12 +3,12 @@
 //  Inkwire
 //
 //  Created by Aatash Parikh on 7/2/18.
-//  Copyright © 2018 Metaphor Educaiton. All rights reserved.
+//  Copyright © 2018 Metaphor Education. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ProjectsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
