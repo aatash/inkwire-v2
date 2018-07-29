@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1843F1B7125392FC07644495 /* Pods_InkwireUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537C04432CD36065A198D63E /* Pods_InkwireUITests.framework */; };
 		633EF63520EAA19900518BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633EF63420EAA19900518BD1 /* AppDelegate.swift */; };
 		633EF63720EAA19900518BD1 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633EF63620EAA19900518BD1 /* ProjectsViewController.swift */; };
 		633EF63920EAA19900518BD1 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633EF63820EAA19900518BD1 /* CommunityViewController.swift */; };
@@ -17,6 +18,8 @@
 		633EF65720EAA19B00518BD1 /* InkwireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633EF65620EAA19B00518BD1 /* InkwireUITests.swift */; };
 		63F300F8210E3FCE00183261 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F300F7210E3FCE00183261 /* InitialViewController.swift */; };
 		63F300FA210E405500183261 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F300F9210E405500183261 /* ProfileViewController.swift */; };
+		9221E22FA2262586BBB50F47 /* Pods_Inkwire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80BA9E7FD416E6552C5DE69 /* Pods_Inkwire.framework */; };
+		ADB8D9F4D8CCA3F6620F2971 /* Pods_InkwireTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1B16AC3500B813B33A3287 /* Pods_InkwireTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14F74FCF885B21D7C53E7592 /* Pods-InkwireUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireUITests/Pods-InkwireUITests.release.xcconfig"; sourceTree = "<group>"; };
+		537C04432CD36065A198D63E /* Pods_InkwireUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InkwireUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		584BA570CC37FD67847BD7E5 /* Pods-InkwireUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireUITests/Pods-InkwireUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B1B16AC3500B813B33A3287 /* Pods_InkwireTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InkwireTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		633EF63120EAA19900518BD1 /* Inkwire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inkwire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633EF63420EAA19900518BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		633EF63620EAA19900518BD1 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +60,11 @@
 		633EF65820EAA19B00518BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63F300F7210E3FCE00183261 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		63F300F9210E405500183261 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7D320B639F6EFF995A9CC7C0 /* Pods-Inkwire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inkwire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire.debug.xcconfig"; sourceTree = "<group>"; };
+		ECC1BC5030F6F4187B3EC7F0 /* Pods-InkwireTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EFCCBCA37E7EE19B909D60F4 /* Pods-InkwireTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.release.xcconfig"; sourceTree = "<group>"; };
+		F80BA9E7FD416E6552C5DE69 /* Pods_Inkwire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inkwire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8AF69A4B8177E3A740E1D1A /* Pods-Inkwire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inkwire.release.xcconfig"; path = "Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9221E22FA2262586BBB50F47 /* Pods_Inkwire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADB8D9F4D8CCA3F6620F2971 /* Pods_InkwireTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1843F1B7125392FC07644495 /* Pods_InkwireUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		100298E4A15902DD8D086F78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D320B639F6EFF995A9CC7C0 /* Pods-Inkwire.debug.xcconfig */,
+				F8AF69A4B8177E3A740E1D1A /* Pods-Inkwire.release.xcconfig */,
+				ECC1BC5030F6F4187B3EC7F0 /* Pods-InkwireTests.debug.xcconfig */,
+				EFCCBCA37E7EE19B909D60F4 /* Pods-InkwireTests.release.xcconfig */,
+				584BA570CC37FD67847BD7E5 /* Pods-InkwireUITests.debug.xcconfig */,
+				14F74FCF885B21D7C53E7592 /* Pods-InkwireUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		60CBE369C175D4B47800E0DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F80BA9E7FD416E6552C5DE69 /* Pods_Inkwire.framework */,
+				5B1B16AC3500B813B33A3287 /* Pods_InkwireTests.framework */,
+				537C04432CD36065A198D63E /* Pods_InkwireUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		633EF62820EAA19900518BD1 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +125,8 @@
 				633EF64A20EAA19B00518BD1 /* InkwireTests */,
 				633EF65520EAA19B00518BD1 /* InkwireUITests */,
 				633EF63220EAA19900518BD1 /* Products */,
+				100298E4A15902DD8D086F78 /* Pods */,
+				60CBE369C175D4B47800E0DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,9 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 633EF65B20EAA19B00518BD1 /* Build configuration list for PBXNativeTarget "Inkwire" */;
 			buildPhases = (
+				5586FFFE4B01A0CEB41B517D /* [CP] Check Pods Manifest.lock */,
 				633EF62D20EAA19900518BD1 /* Sources */,
 				633EF62E20EAA19900518BD1 /* Frameworks */,
 				633EF62F20EAA19900518BD1 /* Resources */,
+				78B4AAC60CD182687030A0A0 /* [CP] Embed Pods Frameworks */,
+				968C9DE3FDF8D8E9472FE6EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +201,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 633EF65E20EAA19B00518BD1 /* Build configuration list for PBXNativeTarget "InkwireTests" */;
 			buildPhases = (
+				A5C96D0E7C1039D3E03F6F80 /* [CP] Check Pods Manifest.lock */,
 				633EF64320EAA19B00518BD1 /* Sources */,
 				633EF64420EAA19B00518BD1 /* Frameworks */,
 				633EF64520EAA19B00518BD1 /* Resources */,
@@ -176,6 +220,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 633EF66120EAA19B00518BD1 /* Build configuration list for PBXNativeTarget "InkwireUITests" */;
 			buildPhases = (
+				D5337714106962B2064616DE /* [CP] Check Pods Manifest.lock */,
 				633EF64E20EAA19B00518BD1 /* Sources */,
 				633EF64F20EAA19B00518BD1 /* Frameworks */,
 				633EF65020EAA19B00518BD1 /* Resources */,
@@ -262,6 +307,125 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5586FFFE4B01A0CEB41B517D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Inkwire-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78B4AAC60CD182687030A0A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		968C9DE3FDF8D8E9472FE6EE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire-resources.sh",
+				"${PODS_ROOT}/FirebaseInvites/Resources/GINInviteResources.bundle",
+				"${PODS_ROOT}/FirebaseInvites/Resources/GPPACLPickerResources.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GINInviteResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GPPACLPickerResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5C96D0E7C1039D3E03F6F80 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InkwireTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5337714106962B2064616DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InkwireUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		633EF62D20EAA19900518BD1 /* Sources */ = {
@@ -443,6 +607,7 @@
 		};
 		633EF65C20EAA19B00518BD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D320B639F6EFF995A9CC7C0 /* Pods-Inkwire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -461,6 +626,7 @@
 		};
 		633EF65D20EAA19B00518BD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8AF69A4B8177E3A740E1D1A /* Pods-Inkwire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -479,6 +645,7 @@
 		};
 		633EF65F20EAA19B00518BD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECC1BC5030F6F4187B3EC7F0 /* Pods-InkwireTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -500,6 +667,7 @@
 		};
 		633EF66020EAA19B00518BD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFCCBCA37E7EE19B909D60F4 /* Pods-InkwireTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,6 +689,7 @@
 		};
 		633EF66220EAA19B00518BD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 584BA570CC37FD67847BD7E5 /* Pods-InkwireUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -541,6 +710,7 @@
 		};
 		633EF66320EAA19B00518BD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14F74FCF885B21D7C53E7592 /* Pods-InkwireUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

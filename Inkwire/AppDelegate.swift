@@ -3,10 +3,11 @@
 //  Inkwire
 //
 //  Created by Aatash Parikh on 7/2/18.
-//  Copyright © 2018 Metaphor Educaiton. All rights reserved.
+//  Copyright © 2018 Metaphor Education. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        
         return true
     }
 
