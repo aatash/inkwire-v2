@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         googleLoginButton.layer.cornerRadius = 25
         googleLoginButton.layer.masksToBounds = true
         googleLoginButton.addTarget(self, action: #selector(googleSignIn), for: .touchUpInside)
-        view.addSubview(googleLoginButton)
+//        view.addSubview(googleLoginButton)
         
         let forgotPassButton = UIButton(frame: CGRect(x: 20, y: googleLoginButton.frame.maxY + 10, width: UIScreen.main.bounds.width - 40, height: 20))
         forgotPassButton.setTitle("Forgot password?", for: .normal)
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         view.addSubview(forgotPassButton)
     }
     
-    func googleSignIn() {
+    @objc func googleSignIn() {
         hud.textLabel.text = "Logging in..."
         hud.show(in: view)
         GIDSignIn.sharedInstance().signIn()
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         var paddingView = UIView(frame:CGRect(x: 0, y: 0, width: 10, height: 45))
         emailTextField.leftView = paddingView
-        emailTextField.leftViewMode = UITextFieldViewMode.always
+        emailTextField.leftViewMode = UITextField.ViewMode.always
         
         let emailIcon = UIImageView(frame: CGRect(x: emailTextField.frame.width - 35, y: (emailTextField.frame.height - 20)/2, width: 20, height: 20))
         emailIcon.contentMode = .scaleAspectFit
@@ -120,7 +120,7 @@ class LoginViewController: UIViewController {
         passwordTextField.font = UIFont(name: "SFUIText-Medium", size: 16)
         paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordTextField.frame.height))
         passwordTextField.leftView = paddingView
-        passwordTextField.leftViewMode = UITextFieldViewMode.always
+        passwordTextField.leftViewMode = UITextField.ViewMode.always
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
@@ -135,24 +135,24 @@ class LoginViewController: UIViewController {
         view.addSubview(seperator)
     }
     
-    func loginButtonTapped() {
+    @objc func loginButtonTapped() {
         hud.textLabel.text = "Logging in..."
         hud.show(in: view)
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             self.hud.dismiss()
             if error == nil {
-                self.performSegue(withIdentifier: "toJournalsFromLogin", sender: self)
+                self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
             } else {
-                let alert = UIAlertController(title: "Invalid Entry", message: "Incorrect Email or Password", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Invalid Entry", message: "Incorrect Email or Password", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
     }
     
-    func forgotPassword() {
+    @objc func forgotPassword() {
         var emailField = UITextField()
-        let alert = UIAlertController(title: "Forgot Password", message: "Enter your email address and we'll send you an email to reset your password.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Forgot Password", message: "Enter your email address and we'll send you an email to reset your password.", preferredStyle: UIAlertController.Style.alert)
         alert.addTextField { (textfield) in
             textfield.placeholder = "Email Address"
             emailField = textfield
@@ -200,7 +200,7 @@ class LoginViewController: UIViewController {
                 self.requestUsername()
             } else {
                 self.saveUsername(name: (inputTextField?.text)!)
-                self.performSegue(withIdentifier: "toJournalsFromLogin", sender: self)
+                self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
             }
         }))
         present(alert, animated: true, completion: nil)
@@ -256,7 +256,7 @@ extension LoginViewController: GIDSignInDelegate, GIDSignInUIDelegate {
             if user?.displayName != nil {
                 self.hud.dismiss()
                 dbRef.child("Users/\(user!.uid)/fullName").setValue(user?.displayName!)
-                self.performSegue(withIdentifier: "toJournalsFromLogin", sender: self)
+                self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
             } else {
                 self.checkHasUsername(withBlock: { hasUsername -> Void in
                     if !hasUsername {
@@ -266,7 +266,7 @@ extension LoginViewController: GIDSignInDelegate, GIDSignInUIDelegate {
                         }
                     } else {
                         self.hud.dismiss()
-                        self.performSegue(withIdentifier: "toJournalsFromLogin", sender: self)
+                        self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
                     }
                 })
             }

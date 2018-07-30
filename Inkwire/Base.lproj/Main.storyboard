@@ -41,11 +41,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Projects" id="vua-Dt-5d6"/>
+                    <navigationItem key="navigationItem" title="My Projects" id="vua-Dt-5d6">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="GQR-fU-AbK">
+                            <connections>
+                                <action selector="signOut:" destination="9pv-A4-QxB" id="ENx-YO-gez"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="doI-dL-wcD" kind="show" identifier="logoutSegue" id="0rG-4g-mTl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="-276.61169415292358"/>
+            <point key="canvasLocation" x="1606" y="-192"/>
         </scene>
         <!--Community-->
         <scene sceneID="wg7-f3-ORb">
@@ -172,10 +181,32 @@
                         <viewLayoutGuide key="safeArea" id="W7K-n6-wX8"/>
                     </view>
                     <navigationItem key="navigationItem" id="xgw-iT-acO"/>
+                    <connections>
+                        <segue destination="1sy-Nh-MRb" kind="show" identifier="toSignup" id="7mN-x7-uzr"/>
+                        <segue destination="aHX-ho-cbs" kind="show" identifier="toLogin" id="633-Vf-Tel"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYG-FG-BJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1119.2" y="-1600.7496251874063"/>
+        </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="dgf-5J-Tbf">
+            <objects>
+                <viewController id="1sy-Nh-MRb" customClass="SignupViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGS-dL-3pO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="M69-w9-r25"/>
+                    </view>
+                    <connections>
+                        <segue destination="x7Q-Ms-iK8" kind="show" identifier="toProfPic" id="kw4-Ug-oV8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2d-kr-lW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2050" y="-2036"/>
         </scene>
         <!--Projects-->
         <scene sceneID="m68-bg-29d">
@@ -217,9 +248,49 @@
             </objects>
             <point key="canvasLocation" x="180" y="-1600.7496251874063"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ge9-bF-erP">
+            <objects>
+                <viewController id="aHX-ho-cbs" customClass="LoginViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cCL-0G-NGe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zL5-gh-Xrp"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="toMainFromLogin" id="qMf-de-ZlN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kEZ-X4-T3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2049" y="-1302"/>
+        </scene>
+        <!--Prof Pic View Controller-->
+        <scene sceneID="Xd4-2s-QDZ">
+            <objects>
+                <viewController id="x7Q-Ms-iK8" customClass="ProfPicViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSF-fm-waZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Twc-Y2-fZ0"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="toMainFromProfPic" id="kHV-a9-nAJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zx-Ps-40w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2921" y="-2036"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0rG-4g-mTl"/>
+        <segue reference="kHV-a9-nAJ"/>
+    </inferredMetricsTieBreakers>
 </document>

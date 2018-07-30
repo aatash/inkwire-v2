@@ -23,6 +23,8 @@
 		63F300F8210E3FCE00183261 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F300F7210E3FCE00183261 /* InitialViewController.swift */; };
 		63F300FA210E405500183261 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F300F9210E405500183261 /* ProfileViewController.swift */; };
 		63FA9658210E7A6F00A21764 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA9657210E7A6F00A21764 /* SignupViewController.swift */; };
+		63FA965B210E7BBD00A21764 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA965A210E7BBD00A21764 /* Constants.swift */; };
+		63FA965E210E7FFA00A21764 /* ProfPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FA965D210E7FFA00A21764 /* ProfPicViewController.swift */; };
 		9221E22FA2262586BBB50F47 /* Pods_Inkwire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80BA9E7FD416E6552C5DE69 /* Pods_Inkwire.framework */; };
 		ADB8D9F4D8CCA3F6620F2971 /* Pods_InkwireTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1B16AC3500B813B33A3287 /* Pods_InkwireTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		63F300F7210E3FCE00183261 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		63F300F9210E405500183261 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		63FA9657210E7A6F00A21764 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		63FA965A210E7BBD00A21764 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		63FA965D210E7FFA00A21764 /* ProfPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfPicViewController.swift; sourceTree = "<group>"; };
 		7D320B639F6EFF995A9CC7C0 /* Pods-Inkwire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inkwire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire.debug.xcconfig"; sourceTree = "<group>"; };
 		ECC1BC5030F6F4187B3EC7F0 /* Pods-InkwireTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EFCCBCA37E7EE19B909D60F4 /* Pods-InkwireTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		633EF63320EAA19900518BD1 /* Inkwire */ = {
 			isa = PBXGroup;
 			children = (
+				63FA965C210E7FE800A21764 /* ProfPicViewController */,
+				63FA9659210E7BA200A21764 /* Utils */,
 				63DA05C6210E794A00830565 /* SignupViewController */,
 				63DA05C5210E793A00830565 /* LoginViewController */,
 				63DA05BC210E742100830565 /* WelcomeViewController */,
@@ -211,6 +217,22 @@
 				63FA9657210E7A6F00A21764 /* SignupViewController.swift */,
 			);
 			path = SignupViewController;
+			sourceTree = "<group>";
+		};
+		63FA9659210E7BA200A21764 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63FA965A210E7BBD00A21764 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		63FA965C210E7FE800A21764 /* ProfPicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63FA965D210E7FFA00A21764 /* ProfPicViewController.swift */,
+			);
+			path = ProfPicViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,8 +525,10 @@
 				63DA05C2210E756300830565 /* WelcomeScreenPage.swift in Sources */,
 				633EF63520EAA19900518BD1 /* AppDelegate.swift in Sources */,
 				63F300FA210E405500183261 /* ProfileViewController.swift in Sources */,
+				63FA965B210E7BBD00A21764 /* Constants.swift in Sources */,
 				63DA05C8210E797C00830565 /* LoginViewController.swift in Sources */,
 				63DA05BF210E743F00830565 /* WelcomeViewController.swift in Sources */,
+				63FA965E210E7FFA00A21764 /* ProfPicViewController.swift in Sources */,
 				633EF63720EAA19900518BD1 /* ProjectsViewController.swift in Sources */,
 				63F300F8210E3FCE00183261 /* InitialViewController.swift in Sources */,
 			);

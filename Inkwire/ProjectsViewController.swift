@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProjectsViewController: UIViewController {
 
@@ -20,6 +21,12 @@ class ProjectsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func signOut(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "logoutSegue", sender: self)
 
+    }
+    
 }
 
