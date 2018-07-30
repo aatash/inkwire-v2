@@ -174,7 +174,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
                 self.ref.child("Users/\(user?.user.uid)/email").setValue(self.emailTextField.text!)
                 self.ref.child("Users/\(user?.user.uid)/fullName").setValue(self.nameTextField.text!)
                 self.ref.child("Users/\(user?.user.uid)/profPicUrl").setValue(user?.user.photoURL)
-                self.performSegue(withIdentifier: "toProfPic", sender: self)
+                self.performSegue(withIdentifier: "toMainFromSignup", sender: self)
             } else {
                 let alert = UIAlertController(title: "", message: error!.localizedDescription, preferredStyle: .alert)
                 let okay = UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
@@ -214,7 +214,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
                 self.requestUsername()
             } else {
                 self.saveUsername(name: (inputTextField?.text)!)
-                self.performSegue(withIdentifier: "toProfPic", sender: self)
+                self.performSegue(withIdentifier: "toMainFromSignup", sender: self)
             }
         }))
         present(alert, animated: true, completion: nil)
@@ -270,7 +270,7 @@ extension SignupViewController: GIDSignInDelegate {
             if user?.displayName != nil {
                 dbRef.child("Users/\(user!.uid)/fullName").setValue(user?.displayName!)
                 self.hud.dismiss()
-                self.performSegue(withIdentifier: "toProfPic", sender: self)
+                self.performSegue(withIdentifier: "toMainFromSignup", sender: self)
             } else {
                 self.checkHasUsername(withBlock: { hasUsername -> Void in
                     if !hasUsername {
@@ -280,7 +280,7 @@ extension SignupViewController: GIDSignInDelegate {
                         }
                     } else {
                         self.hud.dismiss()
-                        self.performSegue(withIdentifier: "toProfPic", sender: self)
+                        self.performSegue(withIdentifier: "toMainFromSignup", sender: self)
                     }
                 })
             }

@@ -201,7 +201,7 @@
                         <viewLayoutGuide key="safeArea" id="M69-w9-r25"/>
                     </view>
                     <connections>
-                        <segue destination="x7Q-Ms-iK8" kind="show" identifier="toProfPic" id="kw4-Ug-oV8"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="toMainFromSignup" id="I0E-Ew-eBr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2d-kr-lW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +291,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0rG-4g-mTl"/>
-        <segue reference="kHV-a9-nAJ"/>
+        <segue reference="I0E-Ew-eBr"/>
     </inferredMetricsTieBreakers>
 </document>
