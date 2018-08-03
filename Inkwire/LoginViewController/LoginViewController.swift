@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         var paddingView = UIView(frame:CGRect(x: 0, y: 0, width: 10, height: 45))
         emailTextField.leftView = paddingView
-        emailTextField.leftViewMode = UITextField.ViewMode.always
+        emailTextField.leftViewMode = UITextFieldViewMode.always
         
         let emailIcon = UIImageView(frame: CGRect(x: emailTextField.frame.width - 35, y: (emailTextField.frame.height - 20)/2, width: 20, height: 20))
         emailIcon.contentMode = .scaleAspectFit
@@ -120,7 +120,7 @@ class LoginViewController: UIViewController {
         passwordTextField.font = UIFont(name: "SFUIText-Medium", size: 16)
         paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordTextField.frame.height))
         passwordTextField.leftView = paddingView
-        passwordTextField.leftViewMode = UITextField.ViewMode.always
+        passwordTextField.leftViewMode = UITextFieldViewMode.always
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
         
@@ -143,7 +143,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
             } else {
-                let alert = UIAlertController(title: "Invalid Entry", message: "Incorrect Email or Password", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Invalid Entry", message: "Incorrect Email or Password", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -152,7 +152,7 @@ class LoginViewController: UIViewController {
     
     @objc func forgotPassword() {
         var emailField = UITextField()
-        let alert = UIAlertController(title: "Forgot Password", message: "Enter your email address and we'll send you an email to reset your password.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Forgot Password", message: "Enter your email address and we'll send you an email to reset your password.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addTextField { (textfield) in
             textfield.placeholder = "Email Address"
             emailField = textfield
