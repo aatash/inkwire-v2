@@ -29,8 +29,6 @@
 #import "FUIPhoneAuth_Internal.h"
 #import "FUIPhoneNumber.h"
 #import "FUIPhoneVerificationViewController.h"
-#import "FUIPrivacyAndTermsOfServiceView+PhoneAuth.h"
-
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -69,7 +67,7 @@ static NSString *const kNextButtonAccessibilityID = @"NextButtonAccessibilityID"
   UITextField *_countryCodeField;
   FUICountryCodeInfo *_selectedCountryCode;
   __weak IBOutlet UITableView *_tableView;
-  __weak IBOutlet FUIPrivacyAndTermsOfServiceView *_tosView;
+  __weak IBOutlet UITextView *_tosTextView;
   FUICountryCodes *_countryCodes;
   FUIPhoneNumber *_phoneNumber;
 }
@@ -132,8 +130,8 @@ static NSString *const kNextButtonAccessibilityID = @"NextButtonAccessibilityID"
                                                               target:nil
                                                               action:nil];
   [self.navigationItem setBackBarButtonItem:backItem];
-  _tosView.authUI = self.authUI;
-  [_tosView useFullMessageWithSMSRateTerm];
+  _tosTextView.text = [NSString stringWithFormat:FUIPhoneAuthLocalizedString(kPAStr_TermsSMS),
+                           FUIPhoneAuthLocalizedString(kPAStr_Verify)];
 
   [self enableDynamicCellHeightForTableView:_tableView];
 }

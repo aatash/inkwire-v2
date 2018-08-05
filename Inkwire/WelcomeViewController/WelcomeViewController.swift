@@ -77,7 +77,7 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
         pageControl = UIPageControl(frame: CGRect(x: (view.frame.width - 200)/2, y: signUpButton.frame.minY - 50, width: 200, height: 50))
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
-        pageControl.addTarget(self, action: #selector(pageTurn), for: UIControl.Event.valueChanged)
+        pageControl.addTarget(self, action: #selector(pageTurn), for: UIControlEvents.valueChanged)
         view.addSubview(pageControl)
     }
     

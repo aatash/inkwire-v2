@@ -83,11 +83,11 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
     func setUpNeedLogin() {
         needLogin = UIButton(frame: CGRect(x: (view.frame.width - 240)/2, y: signUpButton.frame.maxY + 10, width: 240, height: 18))
         let needLoginString = "Already have an account? Sign in"
-//        let myAttribute = [ kCTForegroundColorAttributeName: UIColor.white ]
-//        let needLoginAttrString = NSAttributedString(string: needLoginString, attributes: myAttribute as [NSAttributedString.Key : Any])
-        let attrString = NSMutableAttributedString.init(string: needLoginString)
-        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: ((needLoginString as NSString).range(of: needLoginString as String)))
-        let needLoginAttrString = attrString
+        let myAttribute = [ kCTForegroundColorAttributeName: UIColor.white ]
+        let needLoginAttrString = NSAttributedString(string: needLoginString, attributes: myAttribute as [NSAttributedStringKey : Any])
+        //let attrString = NSMutableAttributedString.init(string: needLoginString)
+        //attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: ((needLoginString as NSString).range(of: needLoginString as String)))
+        //let needLoginAttrString = attrString
         needLogin.setAttributedTitle(needLoginAttrString, for: .normal)
         needLogin.titleLabel!.font = UIFont(name: "SFUIText-Light", size: 15)
         needLogin.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
@@ -112,7 +112,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
         emailTextField.font = UIFont(name: "SFUIText-Medium", size: 16)
         paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: emailTextField.frame.height))
         emailTextField.leftView = paddingView
-        emailTextField.leftViewMode = UITextField.ViewMode.always
+        //emailTextField.leftViewMode = UITextField.leftViewMode.always
         emailTextField.layer.cornerRadius = 3
         emailTextField.autocorrectionType = .no
         emailTextField.delegate = self
@@ -133,7 +133,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
         passTextField.font = UIFont(name: "SFUIText-Medium", size: 16)
         paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passTextField.frame.height))
         passTextField.leftView = paddingView
-        passTextField.leftViewMode = UITextField.ViewMode.always
+        //passTextField.leftViewMode = UITextField.ViewMode.always
         passTextField.isSecureTextEntry = true
         passTextField.delegate = self
         
@@ -152,7 +152,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
         nameTextField.font = UIFont(name: "SFUIText-Medium", size: 16)
         paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: nameTextField.frame.height))
         nameTextField.leftView = paddingView
-        nameTextField.leftViewMode = UITextField.ViewMode.always
+        //nameTextField.leftViewMode = UITextField.leftViewMode.always
         nameTextField.delegate = self
         
         let nameIcon = UIImageView(frame: CGRect(x: nameTextField.frame.width - 35, y: (nameTextField.frame.height - 20)/2, width: 20, height: 20))
