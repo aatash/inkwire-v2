@@ -8,18 +8,65 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
-class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var uid: String?
 
     var imageArray = [UIImage(named: "code"), UIImage(named: "chemistry"), UIImage(named: "Desert-6"), UIImage(named: "journal"), UIImage(named: "profile"),]
-    var titleArray = ["Codeday 2018", "Chemistry Journal", "Photos", "Family Journal", "Robotics",]
-    var descArray = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet",]
-    var selectArray = [false, false, false, false, false,]
+    var titleArray = ["CodeDay 2018",]
+    var descriptionArray = ["Lorem Ipsum",]
+    var isPublicArray = [false,]
+    var lastModifiedArray: [Timestamp] = []
+    
+    var projectsOfUser: [String] = []
+    let userRef = Firestore.firestore().collection("users").document("3KRxy7C6XGZHDe3oLRV0")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        uid = "3KRxy7C6XGZHDe3oLRV0"    // TODO: change to authorized user id
+    }
+    
+    func populateArrays() {
+        // Add projects from user to an array of strings
+        userRef.getDocument { (docSnapshot, error) in
+            guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
+            let myData = docSnapshot.data()
+            self.projectsOfUser = myData?["projectsAsContributor"] as? [String] ?? [""]
+            print("Project IDs copied!")
+            
+            // Add each project's properties to their own arrays
+            var docRef: DocumentReference! = nil
+            if (self.projectsOfUser.count >= 1) {
+                for i in 0...(self.projectsOfUser.count - 1) {
+                    docRef = Firestore.firestore().collection("projects").document(self.projectsOfUser[i])
+                    docRef.getDocument { (docSnapshot, error) in
+                        guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
+                        let myData = docSnapshot.data()
+                        self.titleArray.append(myData!["title"] as? String ?? "")
+                        print(self.titleArray)
+                        self.descriptionArray.append(myData!["description"] as? String ?? "")
+                        print(self.descriptionArray)
+                        self.isPublicArray.append(myData!["isPublic"] as? Bool ?? false)
+                        print(self.isPublicArray)
+                        //let timestamp: Timestamp = docSnapshot.get("lastModified") as! Timestamp
+                        //let date: Date = timestamp.dateValue()
+                        self.lastModifiedArray.append(myData!["lastModified"] as? Timestamp ?? Timestamp.init())
+                        print("Project properties of project \(i) copied!")
+                        print("Number of projects: \(self.projectsOfUser.count)")
+                    }
+                }
+            } else {
+                print("No projects created!")
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populateArrays()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,14 +83,13 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.titleBox?.text = titleArray[indexPath.row]
         cell.recentImage?.image = imageArray[indexPath.row]
-        cell.recentDescription?.text = descArray[indexPath.row]
+        cell.recentDescription?.text = descriptionArray[indexPath.row]
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedProject = titleArray[indexPath.row]
-        selectArray[indexPath.row] = true
         print(selectedProject)
         for indexPath in collectionView.indexPathsForVisibleItems {
             print(indexPath.row)
