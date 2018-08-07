@@ -124,7 +124,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ded-7g-YzM">
-                                <rect key="frame" x="16" y="500" width="343" height="167"/>
+                                <rect key="frame" x="16" y="500" width="343" height="118"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -154,6 +154,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="projectCollectionView" destination="fte-O7-9Q7" id="vmW-Wf-vFb"/>
                         <segue destination="doI-dL-wcD" kind="show" identifier="logoutSegue" id="0rG-4g-mTl"/>
                     </connections>
                 </viewController>
@@ -395,7 +396,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SdA-lp-6fk"/>
         <segue reference="0rG-4g-mTl"/>
         <segue reference="I0E-Ew-eBr"/>
     </inferredMetricsTieBreakers>

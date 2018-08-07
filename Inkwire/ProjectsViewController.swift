@@ -12,25 +12,34 @@ import FirebaseFirestore
 
 class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var uid: String?
+    var uid: String = "3KRxy7C6XGZHDe3oLRV0"    // TODO: change to authorized user id
 
+    @IBOutlet weak var projectCollectionView: UICollectionView!
+    
     var imageArray = [UIImage(named: "code"), UIImage(named: "chemistry"), UIImage(named: "Desert-6"), UIImage(named: "journal"), UIImage(named: "profile"),]
-    var titleArray = ["CodeDay 2018",]
-    var descriptionArray = ["Lorem Ipsum",]
-    var isPublicArray = [false,]
+    var titleArray: [String] = []
+    var descriptionArray: [String] = []
+    var isPublicArray: [Bool] = []
     var lastModifiedArray: [Timestamp] = []
     
     var projectsOfUser: [String] = []
-    let userRef = Firestore.firestore().collection("users").document("3KRxy7C6XGZHDe3oLRV0")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        uid = "3KRxy7C6XGZHDe3oLRV0"    // TODO: change to authorized user id
     }
     
-    func populateArrays() {
+    // TODO: add update functionality (delete -> rewrite) for images and collaborators
+    func fetchRecentData() {
+        //Clear existing local data
+        titleArray.removeAll()
+        descriptionArray.removeAll()
+        isPublicArray.removeAll()
+        lastModifiedArray.removeAll()
+        projectsOfUser.removeAll()
+        
         // Add projects from user to an array of strings
+        let userRef = Firestore.firestore().collection("users").document(uid)
         userRef.getDocument { (docSnapshot, error) in
             guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
             let myData = docSnapshot.data()
@@ -56,6 +65,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.lastModifiedArray.append(myData!["lastModified"] as? Timestamp ?? Timestamp.init())
                         print("Project properties of project \(i) copied!")
                         print("Number of projects: \(self.projectsOfUser.count)")
+                        self.projectCollectionView.reloadData()
                     }
                 }
             } else {
@@ -66,7 +76,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        populateArrays()
+        fetchRecentData()
     }
     
     override func didReceiveMemoryWarning() {
