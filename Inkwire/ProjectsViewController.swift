@@ -110,5 +110,12 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    @IBAction func signOut(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        
+    }
+    
 }
 
