@@ -11,6 +11,8 @@ import Firebase
 import FirebaseDatabase
 import JGProgressHUD
 import GoogleSignIn
+import FirebaseFirestore
+
 class SignupViewController: UIViewController, UINavigationControllerDelegate, GIDSignInUIDelegate {
     
     var ref: DatabaseReference!
@@ -23,6 +25,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
     var nameTextField: UITextField!
     var paddingView: UIView!
     var hud = JGProgressHUD(style: .light)
+    var db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,12 +171,49 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
     @objc func signupButtonTapped() {
         hud.textLabel.text = "Signing up..."
         hud.show(in: view)
+        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passTextField.text!, completion: { user, error in
             self.hud.dismiss()
             if error == nil {
                 self.ref.child("Users/\(user?.user.uid)/email").setValue(self.emailTextField.text!)
                 self.ref.child("Users/\(user?.user.uid)/fullName").setValue(self.nameTextField.text!)
                 self.ref.child("Users/\(user?.user.uid)/profPicUrl").setValue(user?.user.photoURL)
+                
+                //create default project
+                let createDate = Timestamp(date: Date())
+                var ref: DocumentReference? = nil
+                ref = self.db.collection("projects").addDocument(data: [
+                    "coverImg": "",
+                    "description": "Start here! Enter any new thoughts which don't have a place into this default project.",
+                    "isPublic": false,
+                    "lastModified": createDate,
+                    "title": "Default Project" // TODO: Change this to something more appealing
+                ]) { err in
+                    if let err = err {
+                        print("Error adding default project: \(err)")
+                    } else {
+                        print("Default project added with ID: \(ref!.documentID)")
+                    }
+                }
+                
+                //create matching entry in Firestore database, with 1 default project
+                self.db.collection("users").document((user?.user.uid)!).setData([
+                    "fullName": self.nameTextField.text!,
+                    "email": self.emailTextField.text!,
+                    "profPicUrl": Auth.auth().currentUser!.photoURL ?? "",
+                    "projectsAsContributor": [ref!.documentID]
+                ]) { err in
+                    if let err = err {
+                        print("Error setting up user in Firestore: \(err)")
+                    } else {
+                        print("User set up in Firestore!")
+                    }
+                }
+                
+                //append UID to default project document
+                self.db.collection("projects").document(ref!.documentID).setData([
+                    "users": [(user?.user.uid)!] ], merge: true)
+                
                 self.performSegue(withIdentifier: "toMainFromSignup", sender: self)
             } else {
                 let alert = UIAlertController(title: "", message: error!.localizedDescription, preferredStyle: .alert)
