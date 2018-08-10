@@ -11,43 +11,49 @@ import FirebaseFirestore
 
 struct Projects {
 
-    var coverImgUrl: URL
+    var coverImg: String
     var description: String
+    var isPublic: Bool
+    var lastModified: Timestamp
     var title: String
-    var contributorIDs: [String]// {
-    //didSet {
-    //      if contributorIDs != nil {
-    //         contributorIDs = Array(Set(contributorIDs))
-    //      }
-    //  }
-    // }
-    var postIDs: [String] //{
-    //didSet {
-    //     if postIDs != nil {
-    //        postIDs = Array(Set(postIDs))
-    //    }
-    // }
-    // }
+    var users: [String]
+    var posts: [String]
     
-    init(coverImgUrl: URL, description: String, title: String, contributorIDs: [String], postIDs: [String]) {
-        self.coverImgUrl = coverImgUrl
+    init(coverImg: String, description: String, isPublic: Bool, lastModified: Timestamp, title: String, users: [String], posts: [String]) {
+        self.coverImg = coverImg
         self.description = description
+        self.isPublic = isPublic
+        self.lastModified = lastModified
         self.title = title
-        self.contributorIDs = contributorIDs
-        self.postIDs = postIDs
-        
+        self.users = users
+        self.posts = posts
+    }
+    
+    init(project: Projects) {
+        self.coverImg = project.coverImg
+        self.description = project.description
+        self.isPublic = project.isPublic
+        self.lastModified = project.lastModified
+        self.title = project.title
+        self.users = project.users
+        self.posts = project.posts
+    }
+    
+    mutating func addToFirestore() {
         var ref: DocumentReference? = nil
         ref = Firestore.firestore().collection("projects").addDocument(data: [
-            "title": title,
-            "description": description,
-            "coverImgUrl": coverImgUrl,
-            "contributorIDs": [contributorIDs],
-            "postIDs": [postIDs]
+            "coverImg": self.coverImg,
+            "description": self.description,
+            "isPublic": self.isPublic,
+            "lastModified": self.lastModified,
+            "title": self.title,
+            "users": self.users,
+            "posts": self.posts
         ]) { err in
             if let err = err {
-                print("Error adding document: \(err)")
+                print("Error adding project: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("Project added with ID: \(ref!.documentID)")
             }
         }
     }
