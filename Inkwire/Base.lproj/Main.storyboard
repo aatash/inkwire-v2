@@ -103,6 +103,7 @@
                                             <outlet property="recentDescription" destination="EZB-bD-2JK" id="WHR-qp-ljN"/>
                                             <outlet property="recentImage" destination="1dg-fg-w9O" id="Zec-pA-BtO"/>
                                             <outlet property="titleBox" destination="1RF-3M-xOE" id="Lvf-sd-yqg"/>
+                                            <segue destination="cXz-yy-bsT" kind="show" id="yHU-xt-neg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -160,7 +161,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.5999999999999" y="-192.05397301349328"/>
+            <point key="canvasLocation" x="1668" y="-192"/>
+        </scene>
+        <!--Project Detail View Controller-->
+        <scene sceneID="wv2-Ac-t0Q">
+            <objects>
+                <viewController id="cXz-yy-bsT" customClass="ProjectDetailViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vbR-4H-4NG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Project Detail View" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-aq-Clb">
+                                <rect key="frame" x="139" y="318" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qrv-vV-DLx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o32-cc-fDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2591" y="-192"/>
         </scene>
         <!--Community-->
         <scene sceneID="wg7-f3-ORb">
