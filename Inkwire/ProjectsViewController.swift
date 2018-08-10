@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var uid: String = "3KRxy7C6XGZHDe3oLRV0"    // TODO: change to authorized user id
+    var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
     
@@ -27,6 +28,8 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("Loaded.")
+        print(uid)
     }
     
     // TODO: add update functionality (delete -> rewrite) for images and collaborators
@@ -105,6 +108,13 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
             print(indexPath.row)
             print(collectionView.cellForItem(at: indexPath)?.isSelected)
         }
+    }
+    
+    @IBAction func signOut(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        
     }
     
 }
