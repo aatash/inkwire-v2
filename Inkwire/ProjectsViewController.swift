@@ -9,34 +9,28 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var uid: String = "3KRxy7C6XGZHDe3oLRV0"    // TODO: change to authorized user id
+    var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
-    
     var imageArray = [UIImage(named: "code"), UIImage(named: "chemistry"), UIImage(named: "Desert-6"), UIImage(named: "journal"), UIImage(named: "profile"),]
-    var titleArray: [String] = []
-    var descriptionArray: [String] = []
-    var isPublicArray: [Bool] = []
-    var lastModifiedArray: [Timestamp] = []
-    
+    var projectsArray: [Projects] = []
     var projectsOfUser: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("Loaded.")
+        print(uid)
     }
     
     // TODO: add update functionality (delete -> rewrite) for images and collaborators
     func fetchRecentData() {
         //Clear existing local data
-        titleArray.removeAll()
-        descriptionArray.removeAll()
-        isPublicArray.removeAll()
-        lastModifiedArray.removeAll()
-        projectsOfUser.removeAll()
+        projectsArray.removeAll()
         
         // Add projects from user to an array of strings
         let userRef = Firestore.firestore().collection("users").document(uid)
@@ -54,23 +48,29 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                     docRef.getDocument { (docSnapshot, error) in
                         guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
                         let myData = docSnapshot.data()
-                        self.titleArray.append(myData!["title"] as? String ?? "")
-                        print(self.titleArray)
-                        self.descriptionArray.append(myData!["description"] as? String ?? "")
-                        print(self.descriptionArray)
-                        self.isPublicArray.append(myData!["isPublic"] as? Bool ?? false)
-                        print(self.isPublicArray)
-                        //let timestamp: Timestamp = docSnapshot.get("lastModified") as! Timestamp
-                        //let date: Date = timestamp.dateValue()
-                        self.lastModifiedArray.append(myData!["lastModified"] as? Timestamp ?? Timestamp.init())
-                        print("Project properties of project \(i) copied!")
-                        print("Number of projects: \(self.projectsOfUser.count)")
+                        
+                        let coverImg = myData!["coverImg"] as? String ?? ""
+                        let description = myData!["description"] as? String ?? ""
+                        let isPublic = myData!["isPublic"] as? Bool ?? false
+                        let lastModified = myData!["lastModified"] as? Timestamp ?? Timestamp.init()
+                        let title = myData!["title"] as? String ?? ""
+                        let users = myData!["users"] as? [String] ?? []
+                        let posts = myData!["posts"] as? [String] ?? []
+                        
+                        self.projectsArray.append(Projects(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
+                        self.printProjectsArray()
                         self.projectCollectionView.reloadData()
                     }
                 }
             } else {
                 print("No projects created!")
             }
+        }
+    }
+    
+    func printProjectsArray() {
+        for i in 0...(projectsArray.count - 1) {
+            print("Project \(i): \(projectsArray[i].title)  \(projectsArray[i].description)")
         }
     }
     
@@ -85,26 +85,33 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleArray.count
+        return projectsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentProjectsCollectionViewCell", for: indexPath) as! RecentProjectsCollectionViewCell
         
-        cell.titleBox?.text = titleArray[indexPath.row]
-        cell.recentImage?.image = imageArray[indexPath.row]
-        cell.recentDescription?.text = descriptionArray[indexPath.row]
+        cell.titleBox?.text = projectsArray[indexPath.row].title
+        cell.recentImage?.image = imageArray[indexPath.row] // TODO: make reference an image ID in the cloud storage
+        cell.recentDescription?.text = projectsArray[indexPath.row].description
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedProject = titleArray[indexPath.row]
+        let selectedProject = projectsArray[indexPath.row].title
         print(selectedProject)
         for indexPath in collectionView.indexPathsForVisibleItems {
             print(indexPath.row)
             print(collectionView.cellForItem(at: indexPath)?.isSelected)
         }
+    }
+    
+    @IBAction func signOut(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "logoutSegue", sender: self)
+        
     }
     
 }
