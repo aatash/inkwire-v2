@@ -9,11 +9,22 @@
 import UIKit
 
 class ProjectDetailViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        let tlabel = UILabel(frame: frame)
+        tlabel.text = self.title
+        tlabel.textColor = UIColor.white
+        tlabel.font = UIFont.boldSystemFont(ofSize: 17) //UIFont(name: "Helvetica", size: 17.0)
+        tlabel.backgroundColor = UIColor.clear
+        tlabel.adjustsFontSizeToFitWidth = true
+        tlabel.textAlignment = .center
+        self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
+        self.navigationItem.titleView = tlabel
     }
 
     override func didReceiveMemoryWarning() {

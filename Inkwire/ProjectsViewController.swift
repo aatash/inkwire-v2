@@ -107,5 +107,16 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.identifier ?? "no segue id")
+        if segue.identifier == "OpenProject", let sender = sender
+        {
+            print("hello")
+            let destinationController = segue.destination as! ProjectDetailViewController
+            destinationController.title = "Really Long project Title goes here let's see if it fits"
+           }
+        }
+    
 }
 

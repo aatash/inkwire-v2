@@ -103,7 +103,7 @@
                                             <outlet property="recentDescription" destination="EZB-bD-2JK" id="WHR-qp-ljN"/>
                                             <outlet property="recentImage" destination="1dg-fg-w9O" id="Zec-pA-BtO"/>
                                             <outlet property="titleBox" destination="1RF-3M-xOE" id="Lvf-sd-yqg"/>
-                                            <segue destination="cXz-yy-bsT" kind="show" id="yHU-xt-neg"/>
+                                            <segue destination="cXz-yy-bsT" kind="show" identifier="OpenProject" id="yHU-xt-neg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -166,9 +166,9 @@
         <!--Project Detail View Controller-->
         <scene sceneID="wv2-Ac-t0Q">
             <objects>
-                <viewController id="cXz-yy-bsT" customClass="ProjectDetailViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="cXz-yy-bsT" customClass="ProjectDetailViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vbR-4H-4NG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Project Detail View" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-aq-Clb">
@@ -182,6 +182,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qrv-vV-DLx"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o32-cc-fDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
