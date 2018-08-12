@@ -10,15 +10,16 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
-    var imageArray = [UIImage(named: "code"), UIImage(named: "chemistry"), UIImage(named: "Desert-6"), UIImage(named: "journal"), UIImage(named: "profile"),]
-    var projectsArray: [Projects] = []
+    var projectsArray: [Project] = []
     var projectsOfUser: [String] = []
+    var projStorageRef = Storage.storage().reference(forURL: "gs://inkwire-v2.appspot.com/projects")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,8 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                         guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
                         let myData = docSnapshot.data()
                         
-                        let coverImg = myData!["coverImg"] as? String ?? ""
+                        let coverImg = "code.jpg"
+                            //myData!["coverImg"] as? String ?? ""
                         let description = myData!["description"] as? String ?? ""
                         let isPublic = myData!["isPublic"] as? Bool ?? false
                         let lastModified = myData!["lastModified"] as? Timestamp ?? Timestamp.init()
@@ -57,7 +59,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let users = myData!["users"] as? [String] ?? []
                         let posts = myData!["posts"] as? [String] ?? []
                         
-                        self.projectsArray.append(Projects(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
+                        self.projectsArray.append(Project(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
                         self.printProjectsArray()
                         self.projectCollectionView.reloadData()
                     }
@@ -91,8 +93,21 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentProjectsCollectionViewCell", for: indexPath) as! RecentProjectsCollectionViewCell
         
+        let coverImgRef = projStorageRef.child(projectsArray[indexPath.row].coverImg)
+        
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        coverImgRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("Error fetching image!")
+            } else {
+                // Data for "images/island.jpg" is returned
+                print("Image fetched!")
+                cell.recentImage?.image = UIImage(data: data!)
+            }
+        }
         cell.titleBox?.text = projectsArray[indexPath.row].title
-        cell.recentImage?.image = imageArray[indexPath.row] // TODO: make reference an image ID in the cloud storage
+        
         cell.recentDescription?.text = projectsArray[indexPath.row].description
         
         return cell
