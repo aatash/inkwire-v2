@@ -161,7 +161,6 @@
 		633EF63320EAA19900518BD1 /* Inkwire */ = {
 			isa = PBXGroup;
 			children = (
-				63FA965C210E7FE800A21764 /* ProfPicViewController */,
 				63FA9659210E7BA200A21764 /* Utils */,
 				63DA05C6210E794A00830565 /* SignupViewController */,
 				63DA05C5210E793A00830565 /* LoginViewController */,
@@ -234,20 +233,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		63FA965C210E7FE800A21764 /* ProfPicViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfPicViewController;
-			sourceTree = "<group>";
-		};
 		92195EB52114F5D600A991FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				92195EB8211524B200A991FD /* Projects.swift */,
 			);
-			name = Models;
-			path = "New Group1";
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
