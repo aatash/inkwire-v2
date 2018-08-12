@@ -119,8 +119,13 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         if segue.identifier == "OpenProject", let sender = sender
         {
             print("hello")
+            let projectIndex = projectCollectionView.indexPath(for: sender as! UICollectionViewCell)!.row
+            print(projectIndex)
+            let projectTitle = projectsArray[projectIndex].title
+            let projectImage = imageArray[projectIndex]
             let destinationController = segue.destination as! ProjectDetailViewController
-            destinationController.title = "Really Long project Title goes here let's see if it fits"
+            destinationController.title = projectTitle
+            destinationController.coverImage = projectImage!
            }
         }
     

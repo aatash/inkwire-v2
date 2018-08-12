@@ -22,9 +22,11 @@ class ProjectDetailViewController: UIViewController {
         tlabel.font = UIFont.boldSystemFont(ofSize: 17) //UIFont(name: "Helvetica", size: 17.0)
         tlabel.backgroundColor = UIColor.clear
         tlabel.adjustsFontSizeToFitWidth = true
-        tlabel.textAlignment = .center
+        tlabel.textAlignment = .natural
         self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
         self.navigationItem.titleView = tlabel
+        
+        self.projectCoverImage.image = coverImage
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +34,10 @@ class ProjectDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBOutlet weak var projectCoverImage: UIImageView!
+    
+    var coverImage: UIImage?
+    
     /*
     // MARK: - Navigation
 

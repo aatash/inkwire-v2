@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Projects-->
+        <!--Projects-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="ProjectsViewController" customModule="Inkwire" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,7 +147,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JlL-5g-5L6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Projects" id="vua-Dt-5d6">
+                    <navigationItem key="navigationItem" title="Projects" id="vua-Dt-5d6">
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="GQR-fU-AbK">
                             <connections>
                                 <action selector="signOut:" destination="9pv-A4-QxB" id="ENx-YO-gez"/>
@@ -171,23 +171,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Project Detail View" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-aq-Clb">
-                                <rect key="frame" x="139" y="318" width="143" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Project Detail View" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mi-aq-Clb">
+                                <rect key="frame" x="116" y="562" width="133" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Xx-ZY-TCr">
+                                <rect key="frame" x="16" y="105" width="221" height="185"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qrv-vV-DLx"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="projectCoverImage" destination="3Xx-ZY-TCr" id="7q9-Nn-Qjp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o32-cc-fDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="-192"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="-192.05397301349328"/>
         </scene>
         <!--Community-->
         <scene sceneID="wg7-f3-ORb">
