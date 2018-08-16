@@ -17,6 +17,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
+    var imageArray: [UIImage] = []
     var projectsArray: [Project] = []
     var projectsOfUser: [String] = []
     var projStorageRef = Storage.storage().reference(forURL: "gs://inkwire-v2.appspot.com/projects")
@@ -26,6 +27,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Do any additional setup after loading the view, typically from a nib.
         print("Loaded.")
         print(uid)
+        print()
     }
     
     // TODO: add update functionality (delete -> rewrite) for images and collaborators
@@ -50,8 +52,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                         guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
                         let myData = docSnapshot.data()
                         
-                        let coverImg = "code.jpg"
-                            //myData!["coverImg"] as? String ?? ""
+                        let coverImg = myData!["coverImg"] as? String ?? ""
                         let description = myData!["description"] as? String ?? ""
                         let isPublic = myData!["isPublic"] as? Bool ?? false
                         let lastModified = myData!["lastModified"] as? Timestamp ?? Timestamp.init()
@@ -92,7 +93,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentProjectsCollectionViewCell", for: indexPath) as! RecentProjectsCollectionViewCell
-        
+        // Create a reference to the file you want to download
         let coverImgRef = projStorageRef.child(projectsArray[indexPath.row].coverImg)
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
@@ -103,11 +104,14 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
             } else {
                 // Data for "images/island.jpg" is returned
                 print("Image fetched!")
-                cell.recentImage?.image = UIImage(data: data!)
+                self.imageArray.append(UIImage(data: data!)!)
+                
+                cell.recentImage?.image = self.imageArray[indexPath.row]
             }
         }
-        cell.titleBox?.text = projectsArray[indexPath.row].title
+        print(self.imageArray)
         
+        cell.titleBox?.text = projectsArray[indexPath.row].title
         cell.recentDescription?.text = projectsArray[indexPath.row].description
         
         return cell
