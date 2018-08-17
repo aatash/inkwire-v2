@@ -200,6 +200,7 @@ DEPENDENCIES:
   - Firebase/Invites
   - Firebase/Storage
   - FirebaseUI (~> 5.0)
+  - FirebaseUI/Storage
   - GoogleSignIn
   - JGProgressHUD
 
@@ -272,6 +273,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 2d83722138dee424911ba0699fe49980e2a26bc8
+PODFILE CHECKSUM: c41346ffdd8f7052b12959b4ac2965e27cd8baa1
 
 COCOAPODS: 1.5.3

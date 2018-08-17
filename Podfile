@@ -13,6 +13,7 @@ target 'Inkwire' do
   pod 'Firebase/Invites'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Functions'
   pod 'GoogleSignIn'
