@@ -17,7 +17,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
-    var imageArray: [UIImage] = []
+    var imageArray: [String: UIImage] = [:]
     var projectsArray: [Project] = []
     var projectsOfUser: [String] = []
     var projStorageRef = Storage.storage().reference(forURL: "gs://inkwire-v2.appspot.com/projects")
@@ -27,7 +27,6 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Do any additional setup after loading the view, typically from a nib.
         print("Loaded.")
         print(uid)
-        print()
     }
     
     // TODO: add update functionality (delete -> rewrite) for images and collaborators
@@ -62,6 +61,30 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
                         
                         self.projectsArray.append(Project(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
                         self.printProjectsArray()
+                        
+                        let coverImgRef = self.projStorageRef.child(coverImg)
+                        
+                        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                        
+                        coverImgRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                            print(coverImgRef)
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                                print("Error fetching image!")
+                                print(self.imageArray)
+                                self.projectCollectionView.reloadData()
+                            } else {
+                                print("Image fetched!")
+                                self.imageArray[coverImg] = UIImage(data: data!)!
+                                print(self.imageArray)
+                                self.projectCollectionView.reloadData()
+                            }
+                        }
+                        
+                        //Add sort mechanism
+                        self.projectsArray.sort { (lhs: Project, rhs: Project) in
+                            return lhs.lastModified.dateValue() > rhs.lastModified.dateValue()
+                        }
                         self.projectCollectionView.reloadData()
                     }
                 }
@@ -80,6 +103,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchRecentData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,24 +117,8 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentProjectsCollectionViewCell", for: indexPath) as! RecentProjectsCollectionViewCell
-        // Create a reference to the file you want to download
-        let coverImgRef = projStorageRef.child(projectsArray[indexPath.row].coverImg)
         
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        coverImgRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                // Uh-oh, an error occurred!
-                print("Error fetching image!")
-            } else {
-                // Data for "images/island.jpg" is returned
-                print("Image fetched!")
-                self.imageArray.append(UIImage(data: data!)!)
-                
-                cell.recentImage?.image = self.imageArray[indexPath.row]
-            }
-        }
-        print(self.imageArray)
-        
+        cell.recentImage?.image = (self.imageArray[self.projectsArray[indexPath.row].coverImg] != nil) ? self.imageArray[self.projectsArray[indexPath.row].coverImg] : UIImage(named: "journal")
         cell.titleBox?.text = projectsArray[indexPath.row].title
         cell.recentDescription?.text = projectsArray[indexPath.row].description
         
