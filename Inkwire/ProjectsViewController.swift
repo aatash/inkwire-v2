@@ -125,14 +125,14 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedProject = projectsArray[indexPath.row].title
-        print(selectedProject)
-        for indexPath in collectionView.indexPathsForVisibleItems {
-            print(indexPath.row)
-            print(collectionView.cellForItem(at: indexPath)?.isSelected)
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let selectedProject = projectsArray[indexPath.row].title
+//        print(selectedProject)
+//        for indexPath in collectionView.indexPathsForVisibleItems {
+//            print(indexPath.row)
+//            print(collectionView.cellForItem(at: indexPath)?.isSelected)
+//        }
+//    }
     
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         try! Auth.auth().signOut()
@@ -149,7 +149,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
             let projectIndex = projectCollectionView.indexPath(for: sender as! UICollectionViewCell)!.row
             print(projectIndex)
             let projectTitle = projectsArray[projectIndex].title
-            let projectImage = imageArray[projectIndex]
+            let projectImage = imageArray[projectsArray[projectIndex].coverImg]
             let destinationController = segue.destination as! ProjectDetailViewController
             destinationController.title = projectTitle
             destinationController.coverImage = projectImage!
