@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct Projects {
+struct Project {
 
     var coverImg: String
     var description: String
@@ -29,7 +29,7 @@ struct Projects {
         self.posts = posts
     }
     
-    init(project: Projects) {
+    init(project: Project) {
         self.coverImg = project.coverImg
         self.description = project.description
         self.isPublic = project.isPublic
