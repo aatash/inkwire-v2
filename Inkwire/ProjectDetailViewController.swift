@@ -23,7 +23,6 @@ class ProjectDetailViewController: UIViewController {
         tlabel.backgroundColor = UIColor.clear
         tlabel.adjustsFontSizeToFitWidth = true
         tlabel.textAlignment = .natural
-        self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
         self.navigationItem.titleView = tlabel
         
         self.projectCoverImage.image = coverImage

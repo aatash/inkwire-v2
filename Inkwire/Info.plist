@@ -64,5 +64,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>So that you can take photos from your camera for use in projects</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>So that you can add photos from your camera roll to your projects</string>
 </dict>
 </plist>
