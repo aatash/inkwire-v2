@@ -27,6 +27,8 @@
 		92195E842113CDF400A991FD /* RecentProjectsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92195E832113CDF400A991FD /* RecentProjectsCollectionViewCell.swift */; };
 		92195EB9211524B200A991FD /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92195EB8211524B200A991FD /* Projects.swift */; };
 		9221E22FA2262586BBB50F47 /* Pods_Inkwire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80BA9E7FD416E6552C5DE69 /* Pods_Inkwire.framework */; };
+		922346CC2128EF0600F13E0D /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922346CB2128EF0600F13E0D /* AddProjectViewController.swift */; };
+		922346CE2129017100F13E0D /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922346CD2129017100F13E0D /* CameraHandler.swift */; };
 		922F651E21196FDD00267727 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 922F651D21196FDD00267727 /* GoogleService-Info.plist */; };
 		ADB8D9F4D8CCA3F6620F2971 /* Pods_InkwireTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1B16AC3500B813B33A3287 /* Pods_InkwireTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		7D320B639F6EFF995A9CC7C0 /* Pods-Inkwire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inkwire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inkwire/Pods-Inkwire.debug.xcconfig"; sourceTree = "<group>"; };
 		92195E832113CDF400A991FD /* RecentProjectsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProjectsCollectionViewCell.swift; sourceTree = "<group>"; };
 		92195EB8211524B200A991FD /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Projects.swift; path = Inkwire/Projects.swift; sourceTree = SOURCE_ROOT; };
+		922346CB2128EF0600F13E0D /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		922346CD2129017100F13E0D /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		922F651D21196FDD00267727 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ECC1BC5030F6F4187B3EC7F0 /* Pods-InkwireTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EFCCBCA37E7EE19B909D60F4 /* Pods-InkwireTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InkwireTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InkwireTests/Pods-InkwireTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				922F651D21196FDD00267727 /* GoogleService-Info.plist */,
 				633EF63620EAA19900518BD1 /* ProjectsViewController.swift */,
 				633EF63820EAA19900518BD1 /* CommunityViewController.swift */,
+				922346CB2128EF0600F13E0D /* AddProjectViewController.swift */,
 				633EF63A20EAA19900518BD1 /* Main.storyboard */,
 				63DB41FA211D164500D45047 /* ProjectDetailViewController.swift */,
 				63F300F7210E3FCE00183261 /* InitialViewController.swift */,
@@ -229,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				63FA965A210E7BBD00A21764 /* Constants.swift */,
+				922346CD2129017100F13E0D /* CameraHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -528,11 +534,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922346CC2128EF0600F13E0D /* AddProjectViewController.swift in Sources */,
 				63FA9658210E7A6F00A21764 /* SignupViewController.swift in Sources */,
 				633EF63920EAA19900518BD1 /* CommunityViewController.swift in Sources */,
 				63DA05C2210E756300830565 /* WelcomeScreenPage.swift in Sources */,
 				63DB41FB211D164500D45047 /* ProjectDetailViewController.swift in Sources */,
 				92195EB9211524B200A991FD /* Projects.swift in Sources */,
+				922346CE2129017100F13E0D /* CameraHandler.swift in Sources */,
 				633EF63520EAA19900518BD1 /* AppDelegate.swift in Sources */,
 				63F300FA210E405500183261 /* ProfileViewController.swift in Sources */,
 				63FA965B210E7BBD00A21764 /* Constants.swift in Sources */,
@@ -646,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -700,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -715,7 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NRCV2WVRP5;
 				INFOPLIST_FILE = Inkwire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,7 +742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NRCV2WVRP5;
 				INFOPLIST_FILE = Inkwire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

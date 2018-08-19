@@ -153,8 +153,13 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
             let destinationController = segue.destination as! ProjectDetailViewController
             destinationController.title = projectTitle
             destinationController.coverImage = projectImage!
-           }
         }
+    }
+    @IBAction func exitWithoutSaving(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func createProject(_ segue: UIStoryboardSegue) {
+    }
     
 }
 
