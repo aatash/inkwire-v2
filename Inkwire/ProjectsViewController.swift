@@ -14,7 +14,7 @@ import FirebaseStorage
 
 class ProjectsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var uid: String = Auth.auth().currentUser!.uid    // TODO: change to authorized user id
+    var uid: String = Auth.auth().currentUser!.uid
 
     @IBOutlet weak var projectCollectionView: UICollectionView!
     var imageArray: [String: UIImage] = [:]
@@ -33,63 +33,71 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func fetchRecentData() {
         //Clear existing local data
         projectsArray.removeAll()
+        projectsOfUser.removeAll()
         
         // Add projects from user to an array of strings
-        let userRef = Firestore.firestore().collection("users").document(uid)
-        userRef.getDocument { (docSnapshot, error) in
-            guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
-            let myData = docSnapshot.data()
-            self.projectsOfUser = myData?["projectsAsContributor"] as? [String] ?? [""]
-            print("Project IDs copied!")
-            
-            // Add each project's properties to their own arrays
-            var docRef: DocumentReference! = nil
-            if (self.projectsOfUser.count >= 1) {
-                for i in 0...(self.projectsOfUser.count - 1) {
-                    docRef = Firestore.firestore().collection("projects").document(self.projectsOfUser[i])
-                    docRef.getDocument { (docSnapshot, error) in
-                        guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
-                        let myData = docSnapshot.data()
-                        
-                        let coverImg = myData!["coverImg"] as? String ?? ""
-                        let description = myData!["description"] as? String ?? ""
-                        let isPublic = myData!["isPublic"] as? Bool ?? false
-                        let lastModified = myData!["lastModified"] as? Timestamp ?? Timestamp.init()
-                        let title = myData!["title"] as? String ?? ""
-                        let users = myData!["users"] as? [String] ?? []
-                        let posts = myData!["posts"] as? [String] ?? []
-                        
-                        self.projectsArray.append(Project(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
-                        self.printProjectsArray()
-                        
-                        let coverImgRef = self.projStorageRef.child(coverImg)
-                        
-                        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-                        
-                        coverImgRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                            print(coverImgRef)
-                            if let error = error {
-                                // Uh-oh, an error occurred!
-                                print("Error fetching image!")
-                                print(self.imageArray)
-                                self.projectCollectionView.reloadData()
-                            } else {
-                                print("Image fetched!")
-                                self.imageArray[coverImg] = UIImage(data: data!)!
-                                print(self.imageArray)
-                                self.projectCollectionView.reloadData()
-                            }
-                        }
-                        
-                        //Add sort mechanism
-                        self.projectsArray.sort { (lhs: Project, rhs: Project) in
-                            return lhs.lastModified.dateValue() > rhs.lastModified.dateValue()
-                        }
-                        self.projectCollectionView.reloadData()
-                    }
-                }
+        let userRef = Firestore.firestore().collection("users/\(uid)/projectsAsContributor")
+        userRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
             } else {
-                print("No projects created!")
+                for document in querySnapshot!.documents {
+                    self.projectsOfUser.append(document.documentID)
+                }
+                print("Project IDs copied!")
+                
+                // Add each project's properties to their own arrays
+                var docRef: DocumentReference! = nil
+                if (self.projectsOfUser.count >= 1) {
+                    for i in 0...(self.projectsOfUser.count - 1) {
+                        docRef = Firestore.firestore().collection("projects").document(self.projectsOfUser[i])
+                        docRef.getDocument { (docSnapshot, error) in
+                            guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
+                            let myData = docSnapshot.data()
+                            
+                            let coverImg = myData!["coverImg"] as? String ?? ""
+                            let description = myData!["description"] as? String ?? ""
+                            let isPublic = myData!["isPublic"] as? Bool ?? false
+                            let lastModified = myData!["lastModified"] as! Timestamp ?? Timestamp.init()
+                            print(myData!["lastModified"])
+                            print(lastModified)
+                            let title = myData!["title"] as? String ?? ""
+                            let users = myData!["users"] as? [String] ?? []
+                            let posts = myData!["posts"] as? [String] ?? []
+                            
+                            self.projectsArray.append(Project(coverImg: coverImg, description: description, isPublic: isPublic, lastModified: lastModified, title: title, users: users, posts: posts))
+                            self.printProjectsArray()
+                            
+                            let coverImgRef = self.projStorageRef.child(coverImg)
+                            
+                            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                            
+                            coverImgRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                                print(coverImgRef)
+                                if let error = error {
+                                    // Uh-oh, an error occurred!
+                                    print("Error fetching image!")
+                                    print(error)
+                                    print(self.imageArray)
+                                    self.projectCollectionView.reloadData()
+                                } else {
+                                    print("Image fetched!")
+                                    self.imageArray[coverImg] = UIImage(data: data!)!
+                                    print(self.imageArray)
+                                    self.projectCollectionView.reloadData()
+                                }
+                            }
+                            
+                            //Add sort mechanism
+                            self.projectsArray.sort { (lhs: Project, rhs: Project) in
+                                return lhs.lastModified.dateValue() > rhs.lastModified.dateValue()
+                            }
+                            self.projectCollectionView.reloadData()
+                        }
+                    }
+                } else {
+                    print("No projects created!")
+                }
             }
         }
     }
@@ -152,7 +160,7 @@ class ProjectsViewController: UIViewController, UICollectionViewDelegate, UIColl
             let projectImage = imageArray[projectsArray[projectIndex].coverImg]
             let destinationController = segue.destination as! ProjectDetailViewController
             destinationController.title = projectTitle
-            destinationController.coverImage = projectImage!
+            destinationController.coverImage = projectImage ?? UIImage(named: "journal.jpg")
         }
     }
     @IBAction func exitWithoutSaving(_ segue: UIStoryboardSegue) {
