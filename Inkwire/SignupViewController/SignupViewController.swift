@@ -200,8 +200,7 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
                 self.db.collection("users").document((user?.user.uid)!).setData([
                     "fullName": self.nameTextField.text!,
                     "email": self.emailTextField.text!,
-                    "profPicUrl": Auth.auth().currentUser!.photoURL ?? "",
-                    "projectsAsContributor": [ref!.documentID]
+                    "profPicUrl": Auth.auth().currentUser!.photoURL ?? ""
                 ]) { err in
                     if let err = err {
                         print("Error setting up user in Firestore: \(err)")
@@ -209,6 +208,12 @@ class SignupViewController: UIViewController, UINavigationControllerDelegate, GI
                         print("User set up in Firestore!")
                     }
                 }
+                
+                // append project ID to user
+                self.db.collection("users/\(user?.user.uid)/projectsAsContributor").document(ref!.documentID).setData([
+                    "lastModified": createDate,
+                    "lastOpened": createDate
+                ])
                 
                 //append UID to default project document
                 self.db.collection("projects").document(ref!.documentID).setData([
